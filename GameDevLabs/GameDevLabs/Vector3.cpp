@@ -5,7 +5,12 @@
 #include "Vector3.h"
 #include "math.h"
 
-
+Vector3::Vector3() {}
+Vector3::Vector3(float a, float b, float c) {
+	x = a;
+	y = b;
+	z = c;
+}
 bool Vector3::operator==(Vector3 b) {
 	return (x == b.x && y == b.y && z == b.z);
 }
