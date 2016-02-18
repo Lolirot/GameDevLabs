@@ -17,15 +17,11 @@ public:
 	int falling = 0;
 	GameObject() {}
 
-	GameObject(float a, float b, float c, float s, float vx, float vy, float vz) {
-		position.x = a;
-		position.y = b;
-		position.z = c;
+	GameObject(Vector3 pos, Vector3 vel, float s) {
+		position = pos;
 		size = s;
 
-		velocity.x = vx;
-		velocity.y = vy;
-		velocity.z = vz;
+		velocity = vel;
 	}
 
 

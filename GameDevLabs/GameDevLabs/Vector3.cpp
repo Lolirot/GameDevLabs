@@ -19,6 +19,10 @@ Vector3 Vector3::operator+(Vector3 b) {
 	return Vector3(x + b.x, y + b.y, z + b.z);
 }
 
+Vector3 Vector3::operator-(Vector3 b) {
+	return Vector3(x - b.x, y - b.y, z - b.z);
+}
+
 Vector3 Vector3::operator*(Vector3 b) {
 	return Vector3(x*b.x, y*b.y, z*b.z);
 }

@@ -26,7 +26,10 @@ double rotate_x = 0;
 float limit_vertical = 0.7;
 float limit_horizontal = 0.7;
 
-GameObject sphere(0.1, 0.7, 0.5, 0.1, 3, 0, 0);
+Vector3 sphere_position(0.1, 0.7, 0.5);
+Vector3 sphere_velocity(0.1, 3, 0);
+
+GameObject sphere(sphere_position, sphere_velocity, 0);
 //GameObject sphere_b(-0.1, -0.7, 0.5, 0.1);
 GameObject plain;
 int lastElapsed = 0;
