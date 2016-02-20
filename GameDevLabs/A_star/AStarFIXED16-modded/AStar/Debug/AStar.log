@@ -1,9 +1,28 @@
-﻿Build started 17/02/2016 18:24:04.
-     1>Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+﻿Build started 20/02/2016 02:56:11.
+     1>Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" on node 4 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AStarPathFinding.cpp Node.cpp Path.cpp StdAfx.cpp
+         StdAfx.cpp
+         Path.cpp
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(59): warning C4101: 'cost_to_start': unreferenced local variable
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(59): warning C4101: 'cost_to_goal': unreferenced local variable
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(137): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(152): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(175): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(189): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(196): warning C4018: '<': signed/unsigned mismatch
+         Node.cpp
+         AStarPathFinding.cpp
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\astarpathfinding.cpp(313): warning C4018: '<': signed/unsigned mismatch
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.exe" /INCREMENTAL /NOLOGO legacy_stdio_definitions.lib opengl32.lib glu32.lib glut32.lib Glaux.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.lib" /MACHINE:X86 Debug\AStarPathFinding.obj
+         Debug\Node.obj
+         Debug\Path.obj
+         Debug\StdAfx.obj
          AStar.vcxproj -> D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.exe
-     1>Done Building Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" (Build target(s)).
+     1>Done Building Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.07
+Time Elapsed 00:00:08.40

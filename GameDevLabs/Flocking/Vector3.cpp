@@ -60,8 +60,11 @@ float Vector3::length() {
 }
 
 Vector3 Vector3::normalise() {
+	Vector3 normalised(0.0, 0.0, 0.0);
 	float length = Vector3::length();
-	Vector3 normalised = Vector3(x / length, y / length, z / length);
+	if (length != 0.0) {
+		normalised = Vector3(x / length, y / length, z / length);
+	}
 	return normalised;
 }
 
