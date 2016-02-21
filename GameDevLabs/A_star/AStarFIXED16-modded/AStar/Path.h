@@ -21,6 +21,8 @@ private:
 	int obstruction[20][20];
 	int start_x,start_y;
 	int goal_x,goal_y;
+	int movement_cost = 5;
+	int diagonalMove_cost = 10;
 public:
 	CPath();
 	virtual ~CPath();

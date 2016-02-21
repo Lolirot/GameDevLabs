@@ -1,9 +1,12 @@
 // Path.cpp: implementation of the CPath class.
 //
 //////////////////////////////////////////////////////////////////////
-
+#define NOMINMAX
 #include "stdafx.h"
 #include "Path.h"
+#include <stdlib.h>
+#include <math.h>
+#include <algorithm>
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -56,10 +59,48 @@ void CPath::InsertIntoOpenList(int x, int y)
 		//the tile must be ground tile, so it will be passable
 		if(obstruction[x][y]==0)
 		{
-			int base_cost,cost_to_start,cost_to_goal;
-	
-			base_cost=obstruction[x][y];
-		//This is where you need to work out where to go next
+			/*
+			* uncomment for MANHATTAN DISTANCE
+			*/
+			int base_cost, cost_to_start, cost_to_goal;
+			base_cost = obstruction[x][y];
+			cost_to_start = ClosedList.back().StartCost + base_cost;
+			cost_to_goal = abs(x - goal_x) + abs(y - goal_y);
+
+			tempNode.StartCost = cost_to_start;
+			tempNode.TotalCost = base_cost + cost_to_goal + cost_to_start;
+			tempNode.X = x;
+			tempNode.Y = y;
+			tempNode.ParentX = ClosedList.back().X;
+			tempNode.ParentY = ClosedList.back().Y;
+			OpenList.push_back(tempNode);
+			
+			/*int base_cost, cost_to_start, cost_to_goal;
+
+			base_cost = obstruction[x][y];
+			cost_to_start = ClosedList.back().StartCost;
+
+			int cost_to_goal_x = abs(x - goal_x);
+			int cost_to_goal_y =  abs(y - goal_y);
+
+			cost_to_goal = cost_to_goal_x + cost_to_goal_y;
+			int diagonalCost = movement_cost*cost_to_goal + (diagonalMove_cost - 2 * movement_cost)*std::min(cost_to_goal_x, cost_to_goal_y);
+			if (abs(ClosedList.back().X - x) + abs(ClosedList.back().Y - y) > 1)
+			{
+				cost_to_start += diagonalCost;
+			}
+			else {
+				cost_to_start += movement_cost;
+			}
+
+			tempNode.StartCost = cost_to_start;
+			tempNode.TotalCost = base_cost + cost_to_goal + cost_to_start;
+			tempNode.X = x;
+			tempNode.Y = y;
+			tempNode.ParentX = x+1;
+			tempNode.ParentY = y+1;
+			OpenList.push_back(tempNode);*/
+			
 		}
 		else if(obstruction[x][y]==9)
 		{
@@ -105,13 +146,24 @@ void CPath::Create()
 	while(obstruction[next_x][next_y] != 9 && next_x <20 && next_x >=0 && next_y <20 && next_y >=0)
 	{
 		//take all the neighboring passable nodes and add them to the OpenList
-		
+		InsertIntoOpenList(next_x + 1, next_y);
+		InsertIntoOpenList(next_x + 1, next_y + 1);
+		InsertIntoOpenList(next_x, next_y + 1);
+		InsertIntoOpenList(next_x - 1, next_y + 1);
+		InsertIntoOpenList(next_x - 1, next_y);
+		InsertIntoOpenList(next_x - 1, next_y - 1);
+		InsertIntoOpenList(next_x, next_y - 1);
+		InsertIntoOpenList(next_x + 1, next_y - 1);
 
 		//find the min node
-
-		
-
-		//delete the minimum node from the open list
+		if (MinNode(OpenList).StartCost != -1) {
+			NODE minNode = MinNode(OpenList);
+			ClosedList.push_back(minNode);
+			next_x = minNode.X;
+			next_y = minNode.Y;
+			//delete the minimum node from the open list 
+			OpenList = DeleteElement(OpenList, next_x, next_y);
+		}
 		 
 	}
 }
@@ -154,6 +206,8 @@ NODE CPath::MinNode(vector<NODE> nodesList)
 			if(nodesList[i].TotalCost < minNode.TotalCost)
 				minNode=nodesList[i];
 		}
+
+		std::cout << minNode.TotalCost << std::endl;
 		return minNode;
 	}
 	else
@@ -163,7 +217,7 @@ NODE CPath::MinNode(vector<NODE> nodesList)
 		minNode.TotalCost=-1;
 		minNode.X=0;
 		minNode.Y=0;
-
+		std::cout << minNode.TotalCost << std::endl;
 		return minNode;
 	}
 }

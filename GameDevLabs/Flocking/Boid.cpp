@@ -9,6 +9,7 @@ Boid::Boid(Vector3 pos, Vector3 vel, float speed) {
 	position = pos;
 	velocity = vel;
 	this->speed = speed;
+	angle = 0.0f;
 }
 
 Vector3 Boid::separate(std::vector<Boid> neighbours) {
@@ -101,8 +102,13 @@ void Boid::updatePosition(std::vector<Boid> neighbourhood, float deltaTime){
 
 		this->velocity = this->velocity.normalise();
 		this->velocity = this->velocity * speed;
+		lastPos = this->position;
 		this->position = this->position + (this->velocity * deltaTime);
-		if (position.x < -1.0f) position.x = 1.0f;
+		float newAngle = ((this->position-lastPos).normalise()).angle(Vector3::up);
+		if(angle != newAngle) {
+			this->angle = newAngle - this->angle;
+		}
+		if (position.x < -1.0f) { position.x = 1.0f; }
 		else if (position.x > 1.0f) position.x = -1.0f;
 		if (position.y < -1.0f) position.y = 1.0f;
 		else if (position.y > 1.0f) position.y = -1.0f;

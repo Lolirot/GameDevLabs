@@ -15,9 +15,7 @@ bool Particle::isAlive() {
 	else return true;
 }
 
-/*void Particle::run(Vector3 acceleration) {
-	position = position + velocity + acceleration;
-}*/
+
 
 
 

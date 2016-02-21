@@ -14,9 +14,6 @@
 
 #define GRAVITY 2
 
-void display();
-void specialKeys();
-
 int w_height = 800;
 int w_width = 800; 
 
@@ -84,15 +81,9 @@ bool checkObjectCollision(GameObject a, GameObject b) {
 	else return false;
 }
 
-void idle() {
-	timerTick();
-	fall();
-	checkBoundsCollision();
-	display();
 
-}
 
-void display(void)
+void display()
 {
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -127,6 +118,14 @@ void display(void)
 
 	glFlush();
 	glutSwapBuffers();	
+}
+
+void idle() {
+	timerTick();
+	fall();
+	checkBoundsCollision();
+	display();
+
 }
 
 void specialKeys(int key, int x, int y) {

@@ -16,7 +16,7 @@ float Flock::random_float(float min, float max) {
 
 void Flock::populate() {
 	for (unsigned i = 0; i <= MAX_SIZE; i++) {
-		float random_speed = random_float(0.2f, 0.4f);
+		float random_speed = 0.7f;
 		Vector3 random_vel = Vector3(random_float(-5.0f, 5.0f), random_float(-5.0f, 5.0f), 0);
 		flock.push_back(Boid(initPos, random_vel, random_speed));
 	}
@@ -43,7 +43,7 @@ void Flock::update(float deltaTime) {
 		flock[i].updatePosition(Flock::neighbourhood(), deltaTime);
 		//flock[i].position = flock[i].position + flock[i].velocity*deltaTime
 		
-		std::cout << "updating" << flock[i].position.x<<std::endl;
+		//std::cout << "updating" << flock[i].position.x<<std::endl;
 	}
 }
 
