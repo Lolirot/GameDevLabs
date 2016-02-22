@@ -108,23 +108,11 @@ void render() {
 	for (unsigned i = 0; i < flock.flock.size(); i++) {
 		glPushMatrix();
 		glTranslated(flock.flock[i].position.x, flock.flock[i].position.y, flock.flock[i].position.z);
-		//std::cout << (flock.flock[i].velocity.x) << std::endl;
-		//std::cout << (flock.flock[i].velocity.y) << std::endl;
 		Vector3 rotation = Vector3(0.0f, 0.0f, 1.0f)*dTime;
-		glRotatef(flock.flock[i].angle,rotation.x, rotation.y, rotation.z); //rotate object by 30 degree with respect to y-axis
-		//std::cout << flock.flock[i].angle << std::endl;
-		//glBegin(GL_POLYGON);
-		
-		drawSprite(linktex);
-		/*glClearColor(0.1f, 0.03f, 0.6f, 1.0f);
-		glVertex3f(0.05, 0.05, 0.0);
-		glVertex3f(0.05, -0.05, 0.0);
-		glVertex3f(-0.05, -0.05, 0.0);
-		glVertex3f(-0.05, 0.05, 0.0);*/
+		glRotatef(flock.flock[i].angle,rotation.x, rotation.y, rotation.z);
 
-		//glEnd();
-		//std::cout << "triangle drawn" << std::endl;
-		//glRotatef(90, particles[j].position.x, particles[j].position.y, 0.0);
+		drawSprite(linktex);
+	
 		glPopMatrix();
 	}
 	glFlush();
@@ -140,35 +128,7 @@ void timerTick() {
 
 
 
-/*void display() {
-glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-glLoadIdentity();
-for (unsigned j = 0; j < flock.size(); j++) {
-glPushMatrix();
-if (boids[j].position.x < -0.9) boids[j].position.x = 0.9;
-if (boids[j].position.x > 0.9) boids[j].position.x = -0.9;
-if (boids[j].position.y < -0.9) boids[j].position.y = 0.9;
-if (boids[j].position.y > 0.9)boids[j].position.y = -0.9;
-glTranslated(boids[j].position.x, boids[j].position.y, boids[j].position.z);
-glBegin(GL_TRIANGLES);
-glClearColor(0.1f, 0.03f, 0.6f, 1.0f);
-glVertex3f(0.01f, 0.0f, 0.0f);
-glVertex3f(0.03f, 0.01f, 0.0f);
-glVertex3f(0.01f, 0.03f, 0.0f);
-//std::cout << "triangle drawn" << std::endl;
-glEnd();
-//glRotatef(90, particles[j].position.x, particles[j].position.y, 0.0);
-glPopMatrix();
-}
-glFlush();
-glutSwapBuffers();
-}
 
-/*void run() {
-timerTick();
-boids[i].updatePosition(boids, dTime);
-display();
-}*/
 
 void update() {
 	timerTick();

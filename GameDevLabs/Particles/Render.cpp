@@ -29,7 +29,6 @@ void initialise() {
 void timerTick() {
 	int curr = glutGet(GLUT_ELAPSED_TIME);
 	dTime = (curr - lastElapsedTime) * 0.001;
-	//cout << "delta: " << deltaTime << "\n";
 	lastElapsedTime = curr;
 }
 
@@ -41,8 +40,6 @@ void draw() {
 		glutSolidSphere(0.01, 15, 15);
 		glPopMatrix();
 	}
-	glTranslated(emitter.position.x, emitter.position.y, emitter.position.z);
-	glutWireSphere(0.1, 15, 15);
 }
 
 void display() {

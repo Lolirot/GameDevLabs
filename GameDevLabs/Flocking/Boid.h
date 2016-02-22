@@ -10,9 +10,9 @@ public:
 	Vector3 acceleration;
 
 	float speed;
-	float separation_coeff = 0.5f;
-	float cohesion_coeff = 0.3f;
-	float alignment_coeff = 0.3f;
+	float separation_coeff = 0.7f;
+	float cohesion_coeff = 0.5f;
+	float alignment_coeff = 0.4f;
 	float angle;
 	Vector3 lastPos;
 

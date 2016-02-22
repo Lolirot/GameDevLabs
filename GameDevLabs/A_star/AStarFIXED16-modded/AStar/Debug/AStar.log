@@ -1,22 +1,27 @@
-﻿Build started 21/02/2016 19:08:13.
-     1>Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" on node 2 (Build target(s)).
+﻿Build started 21/02/2016 22:56:40.
+     1>Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" on node 4 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Path.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AStarPathFinding.cpp Node.cpp Path.cpp StdAfx.cpp
+         StdAfx.cpp
          Path.cpp
-     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(189): warning C4018: '<': signed/unsigned mismatch
-     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(204): warning C4018: '<': signed/unsigned mismatch
-     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(229): warning C4018: '<': signed/unsigned mismatch
-     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(243): warning C4018: '<': signed/unsigned mismatch
-     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(250): warning C4018: '<': signed/unsigned mismatch
-     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(167): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(180): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(195): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(220): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(234): warning C4018: '<': signed/unsigned mismatch
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\path.cpp(241): warning C4018: '<': signed/unsigned mismatch
+         Node.cpp
+         AStarPathFinding.cpp
+     1>d:\repos\graphics_labs\gamedevlabs\gamedevlabs\a_star\astarfixed16-modded\astar\astarpathfinding.cpp(313): warning C4018: '<': signed/unsigned mismatch
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.exe" /INCREMENTAL /NOLOGO legacy_stdio_definitions.lib opengl32.lib glu32.lib glut32.lib Glaux.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.lib" /MACHINE:X86 Debug\AStarPathFinding.obj
          Debug\Node.obj
          Debug\Path.obj
          Debug\StdAfx.obj
          AStar.vcxproj -> D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\GameDevLabs\Debug\AStar.exe
-     1>Done Building Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" (Build target(s)).
+     1>Done Building Project "D:\Repos\Graphics_Labs\GameDevLabs\GameDevLabs\A_star\AStarFIXED16-modded\AStar\AStar.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.09
+Time Elapsed 00:00:04.52

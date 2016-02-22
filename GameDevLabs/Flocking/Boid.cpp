@@ -14,18 +14,12 @@ Boid::Boid(Vector3 pos, Vector3 vel, float speed) {
 
 Vector3 Boid::separate(std::vector<Boid> neighbours) {
 	Vector3 steer_s(0.0, 0.0, 0.0);
-	float desired_sep = 0.1f;
+	float desired_sep = 0.2f;
 	for (unsigned i = 0; i < neighbours.size(); i++) {
-		//steer_s = steer_s - (neighbours[i].position - this->position);
 		float distance = position.distance(neighbours[i].position);
-		//std::cout << "STEER_SEP X---" << steer_s.x << std::endl;
 		if (distance < desired_sep) {
-			//Vector3 diff = neighbours[i].position - this->position;
 			float diff_x = neighbours[i].position.x - this->position.x;
 			float diff_y = neighbours[i].position.y - this->position.y;
-			//std::cout << "DIFFERENCE, NORMALISED --->" << diff.x << ", " << diff.y << std::endl;
-			//diff = diff.normalise();
-			//std::cout << "DIFFERENCE, NORMALISED --->" << diff.x << ", " << diff.y << std::endl;
 			
 			Vector3 diff_v(diff_x, diff_y, 0.0);
 			if (diff_v.x != 0 && diff_v.y != 0) {
@@ -37,17 +31,8 @@ Vector3 Boid::separate(std::vector<Boid> neighbours) {
 	}
 
 	steer_s = steer_s / ((float)(neighbours.size()));
-	//std::cout << "STEER_SEP X---" << steer_s.x << std:: endl;
-	//std::cout << "STEER_SEP Y----" << steer_s.y << std::endl;
-	//steer_s = steer_s.normalise();
-	//std::cout << "STEER_SEP X---" << steer_s.x << std::endl;
-	//std::cout << "STEER_SEP Y----" << steer_s.y << std::endl;
-
-	//steer_s.x = -(steer_s.x - position.x);
-	//steer_s.y = -(steer_s.y - position.y);
-	//steer_s = steer_s - position;
+	
 	steer_s = steer_s.normalise();
-	//std::cout << "steer  -----> " << steer_s.x << ", " << steer_s.y << std::endl;
 	return steer_s;
 }
 
@@ -84,19 +69,7 @@ void Boid::updatePosition(std::vector<Boid> neighbourhood, float deltaTime){
 
 		separation = Boid::separate(neighbourhood);
 		cohesion = Boid::cohesion(neighbourhood);
-		alignment = Boid::alignment(neighbourhood);
-
-		/*std::cout << "SEPARATION  x-----" << separation.x << std::endl;
-		std::cout << "SEPARATION  y-----" << separation.y << std::endl;
-		std::cout << "---------------------------------------" << std::endl;
-		std::cout << "COHESION  x-----" << cohesion.x << std::endl;
-		std::cout << "COHESION  y-----" << cohesion.y << std::endl;
-		std::cout << "---------------------------------------" << std::endl;
-		std::cout << "ALIGNMENT  x-----" << alignment.x << std::endl;
-		std::cout << "ALIGNMENT  y-----" << alignment.y << std::endl;
-		std::cout << "---------------------------------------" << std::endl;*/
-
-		
+		alignment = Boid::alignment(neighbourhood);		
 		
 		this->velocity = this->velocity + separation*separation_coeff + cohesion*cohesion_coeff + alignment*alignment_coeff;
 

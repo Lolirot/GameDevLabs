@@ -12,6 +12,9 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
+int next_x;
+int next_y;
+
 CPath::CPath()
 {
 
@@ -59,9 +62,6 @@ void CPath::InsertIntoOpenList(int x, int y)
 		//the tile must be ground tile, so it will be passable
 		if(obstruction[x][y]==0)
 		{
-			/*
-			* uncomment for MANHATTAN DISTANCE
-			*/
 			int base_cost, cost_to_start, cost_to_goal;
 			base_cost = obstruction[x][y];
 			cost_to_start = ClosedList.back().StartCost + base_cost;
@@ -74,33 +74,6 @@ void CPath::InsertIntoOpenList(int x, int y)
 			tempNode.ParentX = ClosedList.back().X;
 			tempNode.ParentY = ClosedList.back().Y;
 			OpenList.push_back(tempNode);
-			
-			/*int base_cost, cost_to_start, cost_to_goal;
-
-			base_cost = obstruction[x][y];
-			cost_to_start = ClosedList.back().StartCost;
-
-			int cost_to_goal_x = abs(x - goal_x);
-			int cost_to_goal_y =  abs(y - goal_y);
-
-			cost_to_goal = cost_to_goal_x + cost_to_goal_y;
-			int diagonalCost = movement_cost*cost_to_goal + (diagonalMove_cost - 2 * movement_cost)*std::min(cost_to_goal_x, cost_to_goal_y);
-			if (abs(ClosedList.back().X - x) + abs(ClosedList.back().Y - y) > 1)
-			{
-				cost_to_start += diagonalCost;
-			}
-			else {
-				cost_to_start += movement_cost;
-			}
-
-			tempNode.StartCost = cost_to_start;
-			tempNode.TotalCost = base_cost + cost_to_goal + cost_to_start;
-			tempNode.X = x;
-			tempNode.Y = y;
-			tempNode.ParentX = x+1;
-			tempNode.ParentY = y+1;
-			OpenList.push_back(tempNode);*/
-			
 		}
 		else if(obstruction[x][y]==9)
 		{
@@ -141,11 +114,12 @@ void CPath::Create()
 	//add the start node to the closed list
 	InsertIntoClosedList(0,0,start_x,start_y);
 
-	int next_x=start_x;
-	int next_y=start_y;
+	next_x=start_x;
+	next_y=start_y;
 	while(obstruction[next_x][next_y] != 9 && next_x <20 && next_x >=0 && next_y <20 && next_y >=0)
 	{
 		//take all the neighboring passable nodes and add them to the OpenList
+		//added diagonal nodes as well, to support diagonal search for the grid
 		InsertIntoOpenList(next_x + 1, next_y);
 		InsertIntoOpenList(next_x + 1, next_y + 1);
 		InsertIntoOpenList(next_x, next_y + 1);
@@ -153,6 +127,10 @@ void CPath::Create()
 		InsertIntoOpenList(next_x - 1, next_y);
 		InsertIntoOpenList(next_x - 1, next_y - 1);
 		InsertIntoOpenList(next_x, next_y - 1);
+		InsertIntoOpenList(next_x + 1, next_y - 1);
+		InsertIntoOpenList(next_x - 1, next_y - 1);
+		InsertIntoOpenList(next_x + 1, next_y + 1);
+		InsertIntoOpenList(next_x - 1, next_y - 1);
 		InsertIntoOpenList(next_x + 1, next_y - 1);
 
 		//find the min node
@@ -176,13 +154,13 @@ vector<NODE> CPath::BackTrack()
 	for(int i=ClosedList.size()-1;i> -1;i--)
 	{
 		NODE tempNode;
-		tempNode=GetNodeAt(ClosedList[i].ParentX,ClosedList[i].ParentY);
+		tempNode=GetNodeAtClosedList(ClosedList[i].ParentX,ClosedList[i].ParentY);
 		if(tempNode.TotalCost != -1)
 			pathL.push_back(tempNode);
 	}
 	return pathL;
 }
-NODE CPath::GetNodeAt(int x,int y)
+NODE CPath::GetNodeAtClosedList(int x,int y)
 {
 	NODE tempNode;
 	tempNode.TotalCost=-1;
@@ -191,6 +169,19 @@ NODE CPath::GetNodeAt(int x,int y)
 		if(ClosedList[i].X==x && ClosedList[i].Y==y)
 		{
 			tempNode=ClosedList[i];
+		}
+	}
+	return tempNode;
+}
+
+NODE CPath::GetNodeAtOpenList(int x, int y) {
+	NODE tempNode;
+	tempNode.TotalCost = -1;
+	for (int i = 0; i<OpenList.size(); i++)
+	{
+		if (OpenList[i].X == x && OpenList[i].Y == y)
+		{
+			tempNode = OpenList[i];
 		}
 	}
 	return tempNode;
@@ -207,7 +198,7 @@ NODE CPath::MinNode(vector<NODE> nodesList)
 				minNode=nodesList[i];
 		}
 
-		std::cout << minNode.TotalCost << std::endl;
+		//std::cout << minNode.TotalCost << std::endl;
 		return minNode;
 	}
 	else
@@ -217,7 +208,7 @@ NODE CPath::MinNode(vector<NODE> nodesList)
 		minNode.TotalCost=-1;
 		minNode.X=0;
 		minNode.Y=0;
-		std::cout << minNode.TotalCost << std::endl;
+		
 		return minNode;
 	}
 }
